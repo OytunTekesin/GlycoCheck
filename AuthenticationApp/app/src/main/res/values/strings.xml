@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">AuthenticationApp</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="loginnow">Giriş Yap</string>
+    <string name="forgotpassword">Şifremi Unuttum</string>
+    <string name="sign_in">Kayıt Ol</string>
+    <string name="user_name">Kullanıcı Adı</string>
+    <string name="pasword_again">Şifre(Tekrar)</string>
+    <string name="register">Kayıt Ol</string>
+    <string name="auth_data_empty">Gerekli alanları doldurunuz!</string>
+    <string name="auth_email_error">E-Posta alanı boş olamaz!</string>
+    <string name="register_password_validate_error">Şifreler eşleşmiyor, Tekrar deneyin..</string>
+    <string name="loading_data">Yükleniyor...</string>
+    <string name="login_success">Giriş Başarılı</string>
+    <string name="reset_password_message">Şifre başarıyla sıfırlandı, E-Postanızı kontrol ediniz.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

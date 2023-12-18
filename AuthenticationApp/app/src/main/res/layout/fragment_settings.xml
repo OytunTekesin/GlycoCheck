@@ -1,0 +1,62 @@
+<!-- fragment_blood_sugar_input.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".SettingsFragment">
+
+    <!-- Kan şekeri değeri için input -->
+    <EditText
+        android:id="@+id/editTextBloodSugar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Kan Şekeri Değeri"
+        android:inputType="numberDecimal" />
+
+    <!-- Açlık ve tokluk seçenekleri için RadioGroup -->
+    <RadioGroup
+        android:id="@+id/radioGroupMeal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radioButtonFasting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Açlık" />
+
+        <RadioButton
+            android:id="@+id/radioButtonFed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tokluk" />
+    </RadioGroup>
+
+    <!-- Açlık süresi için input -->
+    <EditText
+        android:id="@+id/editTextFastingDuration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Açlık Süresi"
+        android:inputType="number" />
+
+    <!-- Açıklama alanı için input -->
+    <EditText
+        android:id="@+id/editTextDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Açıklama" />
+
+    <!-- Tarih ve saat seçimi için button -->
+    <Button
+        android:id="@+id/buttonPickDateTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tarih ve Saat Seç" />
+
+    <!-- Diğer bileşenleri ekleyebilirsiniz -->
+
+</LinearLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#0789a9</color>
+    <color name="colorPrimaryDark">#00C68E</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="bg_darkmode">#FFFFFF</color>
+    <color name="indicator">#393939</color>
+    <color name="fab">#393939</color>
+    <color name="settings">#393939</color>
+    <color name="rehoming_post">#DADADA</color>
+
+    <color name="btn1">#20BF55</color>
+    <color name="btn2">#01BAEF</color>
+
+    <color name="firstlayer">#FFFFFF</color>
+
+    <color name="rhusername">#202020</color>
+
+    <color name="green">#00C68E</color>
+    <color name="endcolor">#00805B</color>
+
+    <color name="login_details">#CCFFFFFF</color>
+    <color name="login_details_light">#1AFFFFFF</color>
+    <color name="login_details_medium">#66FFFFFF</color>
+</resources>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "41031532976",
+    "project_id": "glycocheck-b2333",
+    "storage_bucket": "glycocheck-b2333.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:41031532976:android:57771455e8e73e3213d675",
+        "android_client_info": {
+          "package_name": "com.oytuntekesin.authenticationapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAF_KGwh5fBDbYFvEoAPNydJiexdSIMwuU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

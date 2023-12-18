@@ -1,0 +1,122 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GlycoFragment">
+
+    <!-- Kan Şekeri Giriş Formu -->
+    <TextView
+        android:id="@+id/textViewBloodSugar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kan Şekeri (mg/dL):"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextBloodSugar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewBloodSugar"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:inputType="numberDecimal"/>
+
+    <TextView
+        android:id="@+id/textViewMealStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Açlık / Tokluk:"
+        android:layout_below="@id/editTextBloodSugar"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroupMealStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewMealStatus"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp">
+
+        <RadioButton
+            android:id="@+id/radioButtonFasting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Açlık"/>
+
+        <RadioButton
+            android:id="@+id/radioButtonFeeding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tokluk"/>
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textViewMealDuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Açlık Süresi (saat):"
+        android:layout_below="@id/radioGroupMealStatus"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextMealDuration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewMealDuration"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:inputType="number"/>
+
+    <TextView
+        android:id="@+id/textViewAdditionalNote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Açıklama Notu:"
+        android:layout_below="@id/editTextMealDuration"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextAdditionalNote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewAdditionalNote"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:inputType="textMultiLine"
+        android:lines="3"/>
+
+    <!-- Tarih ve Saat Seçimi -->
+    <TextView
+        android:id="@+id/textViewDateTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tarih ve Saat:"
+        android:layout_below="@id/editTextAdditionalNote"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextDateTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewDateTime"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:inputType=""/>
+
+
+    <!-- Kaydet Butonu -->
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kaydet"
+        android:layout_below="@id/editTextDateTime"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"/>
+</RelativeLayout>
