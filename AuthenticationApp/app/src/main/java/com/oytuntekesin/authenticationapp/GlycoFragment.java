@@ -2,6 +2,7 @@ package com.oytuntekesin.authenticationapp;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,11 +11,20 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.oytuntekesin.authenticationapp.adapters.GlycoAdapter;
+import com.oytuntekesin.authenticationapp.dto.Glyco;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -28,35 +38,40 @@ public class GlycoFragment extends Fragment {
         // Fragment'ın görünümünü oluştur
         View rootView = inflater.inflate(R.layout.fragment_glyco, container, false);
 
-        // Gerekli kontrolleri bul
-        EditText editTextBloodSugar = rootView.findViewById(R.id.editTextBloodSugar);
-        RadioGroup radioGroupMealStatus = rootView.findViewById(R.id.radioGroupMealStatus);
-        EditText editTextMealDuration = rootView.findViewById(R.id.editTextMealDuration);
-        EditText editTextAdditionalNote = rootView.findViewById(R.id.editTextAdditionalNote);
-        Button buttonSave = rootView.findViewById(R.id.buttonSave);
+        FloatingActionButton btnPetAdd;
+        btnPetAdd = rootView.findViewById(R.id.pet_add);
+        ArrayList<Glyco> allGlycoList = new ArrayList<Glyco>();
 
-        // Kaydet butonuna tıklama işlemini ekle
-        buttonSave.setOnClickListener(new View.OnClickListener() {
+        Glyco glyco = new Glyco();
+        glyco.setTarih("23.12.2023 18:30");
+        glyco.setAciklama("Milkshake içtikten yarım saat sonra ölçtüm");
+        glyco.setOlcumTuru("Açlık");
+        glyco.setGlikozDegeri("135");
+        allGlycoList.add(glyco);
+
+        GlycoAdapter adapter_items = new GlycoAdapter(allGlycoList);
+
+        RecyclerView recycler_view = rootView.findViewById(R.id.glycoItemList);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        layoutManager.scrollToPosition(0);
+
+        recycler_view.setLayoutManager(layoutManager);
+        recycler_view.setHasFixedSize(true);
+        recycler_view.setNestedScrollingEnabled(false);
+        recycler_view.setAdapter(adapter_items);
+        recycler_view.setItemAnimator(new DefaultItemAnimator());
+
+        btnPetAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Burada gerekli verileri al ve kaydetme işlemini gerçekleştir
-                String bloodSugar = editTextBloodSugar.getText().toString();
-                int mealStatusId = radioGroupMealStatus.getCheckedRadioButtonId();
-                String mealStatus = (mealStatusId == R.id.radioButtonFasting) ? "Açlık" : "Tokluk";
-                String mealDuration = editTextMealDuration.getText().toString();
-                String additionalNote = editTextAdditionalNote.getText().toString();
-
-                // Verileri kullanarak kaydetme işlemini gerçekleştir
-                kaydet(bloodSugar, mealStatus, mealDuration, additionalNote);
+                Intent gecisYap = new Intent(getActivity().getApplicationContext(), DegerEkleActivity.class);
+                startActivity(gecisYap);
             }
         });
 
         return rootView;
-    }
-
-    private void kaydet(String bloodSugar, String mealStatus, String mealDuration, String additionalNote) {
-        // Burada verileri kaydetme işlemini gerçekleştir
-        // Verileri örneğin bir veritabanına veya başka bir depolama yöntemine kaydedebilirsiniz
     }
 
 }

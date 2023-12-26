@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:id="@+id/gylcoCard"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp">
+
+                <TextView
+                    android:id="@+id/circleView"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_centerInParent="false"
+                    android:padding="16dp"
+                    android:background="@drawable/circle_background"
+                    android:text="211"
+                    android:textColor="#FFFFFF"
+                    android:textSize="34sp"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:id="@+id/toklukTextView"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/circleView"
+                    android:text="Tokluk"
+                    android:textSize="34sp"
+                    android:gravity="center"
+                    android:textColor="@android:color/black" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/dateTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="1 Ocak 2023"
+                    android:textSize="22sp"
+                    android:textColor="@android:color/black"
+                    android:layout_alignParentTop="true"
+                    android:gravity="center"/>
+                <TextView
+                    android:id="@+id/timeTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="23:23"
+                    android:textSize="22sp"
+                    android:textColor="@android:color/black"
+                    android:layout_below="@id/dateTextView"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:id="@+id/descriptionTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/timeTextView"
+                    android:layout_marginTop="8dp"
+                    android:text="Bu bir açıklama metni."
+                    android:textSize="22sp"
+                    android:textColor="@android:color/black"
+                    android:gravity="center"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
