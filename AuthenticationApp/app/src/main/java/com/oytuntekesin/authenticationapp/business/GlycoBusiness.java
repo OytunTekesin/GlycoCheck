@@ -24,18 +24,18 @@ public class GlycoBusiness extends BaseBusiness{
         }
 
         glyco.setUSER_ID(_auth.getCurrentUser().getUid());
-        if (glyco.getID() == null){
-            _db.collection("GLYCO_TABLE").document().set(glyco).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    Toast.makeText(context, "Eklendi.", Toast.LENGTH_LONG).show();
-                }
-            });
-        }else {
+        if (glyco.getID() != null && !glyco.getID().isEmpty()){
             _db.collection("GLYCO_TABLE").document(glyco.getID()).set(glyco).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     Toast.makeText(context, "Düzenlendi.", Toast.LENGTH_LONG).show();
+                }
+            });
+        }else {
+            _db.collection("GLYCO_TABLE").document().set(glyco).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    Toast.makeText(context, "Eklendi.", Toast.LENGTH_LONG).show();
                 }
             });
         }
