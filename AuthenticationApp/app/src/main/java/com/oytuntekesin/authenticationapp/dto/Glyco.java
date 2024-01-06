@@ -1,44 +1,73 @@
 package com.oytuntekesin.authenticationapp.dto;
 
+import java.util.EventListener;
+
 public class Glyco {
     public Glyco() {
 
     }
 
-    private String glikozDegeri;
-    private String olcumTuru;
-    private String tarih;
-    private String aciklama;
+    private String ID;
+    private String ACIKLAMA;
+    private String ACLIK_SURESI;
+    private String ACLIK_TOKLUK;
+    private String KAN_SEKERI;
+    private String TARIH;
+    private String USER_ID;
 
-    public String getGlikozDegeri() {
-        return glikozDegeri;
+    public String getACIKLAMA() {
+        return ACIKLAMA;
     }
 
-    public void setGlikozDegeri(String glikozDegeri) {
-        this.glikozDegeri = glikozDegeri;
+    public void setACIKLAMA(String ACIKLAMA) {
+        this.ACIKLAMA = ACIKLAMA;
     }
 
-    public String getOlcumTuru() {
-        return olcumTuru;
+    public String getACLIK_SURESI() {
+        return ACLIK_SURESI;
     }
 
-    public void setOlcumTuru(String olcumTuru) {
-        this.olcumTuru = olcumTuru;
+    public void setACLIK_SURESI(String ACLIK_SURESI) {
+        this.ACLIK_SURESI = ACLIK_SURESI;
     }
 
-    public String getTarih() {
-        return tarih;
+    public String getACLIK_TOKLUK() {
+        return ACLIK_TOKLUK;
     }
 
-    public void setTarih(String tarih) {
-        this.tarih = tarih;
+    public void setACLIK_TOKLUK(String ACLIK_TOKLUK) {
+        this.ACLIK_TOKLUK = ACLIK_TOKLUK;
     }
 
-    public String getAciklama() {
-        return aciklama;
+    public String getKAN_SEKERI() {
+        return KAN_SEKERI;
     }
 
-    public void setAciklama(String aciklama) {
-        this.aciklama = aciklama;
+    public void setKAN_SEKERI(String KAN_SEKERI) {
+        this.KAN_SEKERI = KAN_SEKERI;
+    }
+
+    public String getTARIH() {
+        return TARIH;
+    }
+
+    public void setTARIH(String TARIH) {
+        this.TARIH = TARIH;
+    }
+
+    public String getUSER_ID() {
+        return USER_ID;
+    }
+
+    public void setUSER_ID(String USER_ID) {
+        this.USER_ID = USER_ID;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
     }
 }

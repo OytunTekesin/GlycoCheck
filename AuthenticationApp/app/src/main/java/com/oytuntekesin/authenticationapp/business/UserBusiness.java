@@ -19,16 +19,11 @@ import com.oytuntekesin.authenticationapp.R;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UserBusiness {
-    FirebaseAuth _auth;
+public class UserBusiness extends BaseBusiness {
     Context _context;
     public UserBusiness(Context context){
         _auth = FirebaseAuth.getInstance();
         _context = context;
-    }
-
-    public FirebaseUser getLoginUser() {
-        return _auth.getCurrentUser();
     }
 
     public String CheckUserLogin(String email, String password) {
