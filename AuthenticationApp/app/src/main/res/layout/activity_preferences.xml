@@ -1,0 +1,109 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:orientation="vertical">
+
+    <!-- Bildirim Açık/Kapalı Switch -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:gravity="start">
+
+        <TextView
+            android:id="@+id/textViewNotification"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:text="Bildirimleri Aç"
+            android:textSize="20sp"
+            android:gravity="start|center_vertical"
+            android:layout_weight="1"/>
+
+        <Switch
+            android:id="@+id/switchNotification"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_gravity="end"
+            android:layout_weight="1"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+    </LinearLayout>
+
+    <!-- Bildirim Tonu Seçimi -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:gravity="start">
+
+        <TextView
+            android:id="@+id/textViewRingtone"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:text="Bildirim Tonu:"
+            android:textSize="20sp"
+            android:gravity="start|center_vertical"
+            android:layout_weight="1"/>
+
+        <Spinner
+            android:id="@+id/spinnerRingtone"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:background="@drawable/edit_text_background"
+            android:layout_gravity="end"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <!-- Titreşim Açık/Kapalı Switch -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:gravity="start">
+
+        <TextView
+            android:id="@+id/textViewVibration"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:text="Titreşimi Aç"
+            android:textSize="20sp"
+            android:gravity="start|center_vertical"
+            android:layout_weight="1"/>
+
+        <Switch
+            android:id="@+id/switchVibration"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_gravity="end"
+            android:layout_weight="1"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+    </LinearLayout>
+
+    <!-- Bildirim Aralığı Seçimi -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:gravity="start">
+
+        <TextView
+            android:id="@+id/textViewNotificationInterval"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:text="Bildirim Aralığı:"
+            android:textSize="20sp"
+            android:gravity="start|center_vertical"
+            android:layout_weight="1"/>
+
+        <Spinner
+            android:id="@+id/spinnerNotificationInterval"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:background="@drawable/edit_text_background"
+            android:layout_gravity="end"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+</LinearLayout>
