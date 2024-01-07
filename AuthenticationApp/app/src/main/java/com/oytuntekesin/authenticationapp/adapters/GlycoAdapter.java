@@ -1,25 +1,17 @@
 package com.oytuntekesin.authenticationapp.adapters;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
-import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.oytuntekesin.authenticationapp.DegerEkleActivity;
+import com.oytuntekesin.authenticationapp.AddGlycoActivity;
 import com.oytuntekesin.authenticationapp.R;
 import com.oytuntekesin.authenticationapp.dto.Glyco;
 
@@ -127,7 +119,7 @@ public class GlycoAdapter extends RecyclerView.Adapter<GlycoAdapter.ViewHolder> 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(holder.cardView.getContext(), DegerEkleActivity.class);
+                Intent intent = new Intent(holder.cardView.getContext(), AddGlycoActivity.class);
                 intent.putExtra("GLYCO_ID", gylcoList.get(position).getID());
                 intent.putExtra("ACIKLAMA", gylcoList.get(position).getACIKLAMA());
                 intent.putExtra("ACLIK_SURESI", gylcoList.get(position).getACLIK_SURESI());

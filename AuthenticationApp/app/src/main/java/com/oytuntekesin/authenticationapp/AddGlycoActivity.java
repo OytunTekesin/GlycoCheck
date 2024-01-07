@@ -1,7 +1,5 @@
 package com.oytuntekesin.authenticationapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -14,7 +12,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import com.oytuntekesin.authenticationapp.dto.Glyco;
 
@@ -22,13 +19,13 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-public class DegerEkleActivity extends BaseActivity {
+public class AddGlycoActivity extends BaseActivity {
     String GLYCO_ID = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_deger_ekle);
-        _context = DegerEkleActivity.this;
+        setContentView(R.layout.activity_add_glyco);
+        _context = AddGlycoActivity.this;
 
         EditText editTextBloodSugar = findViewById(R.id.editTextBloodSugar);
         RadioGroup radioGroupMealStatus = findViewById(R.id.radioGroupMealStatus);
@@ -83,7 +80,7 @@ public class DegerEkleActivity extends BaseActivity {
                 int minute = calendar.get(Calendar.MINUTE);
 
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
-                        DegerEkleActivity.this,
+                        AddGlycoActivity.this,
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int selectedYear, int monthOfYear, int dayOfMonth) {
@@ -94,7 +91,7 @@ public class DegerEkleActivity extends BaseActivity {
 
                                 // Create TimePickerDialog to pick the time
                                 TimePickerDialog timePickerDialog = new TimePickerDialog(
-                                        DegerEkleActivity.this,
+                                        AddGlycoActivity.this,
                                         new TimePickerDialog.OnTimeSetListener() {
                                             @Override
                                             public void onTimeSet(TimePicker view, int selectedHour, int selectedMinute) {

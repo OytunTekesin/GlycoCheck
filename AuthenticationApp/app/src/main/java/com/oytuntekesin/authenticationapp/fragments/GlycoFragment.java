@@ -17,7 +17,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.oytuntekesin.authenticationapp.DegerEkleActivity;
+import com.oytuntekesin.authenticationapp.AddGlycoActivity;
 import com.oytuntekesin.authenticationapp.R;
 import com.oytuntekesin.authenticationapp.adapters.GlycoAdapter;
 import com.oytuntekesin.authenticationapp.dto.Glyco;
@@ -79,7 +79,7 @@ public class GlycoFragment extends BaseFragment {
         btnGlycoAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent gecisYap = new Intent(getActivity().getApplicationContext(), DegerEkleActivity.class);
+                Intent gecisYap = new Intent(getActivity().getApplicationContext(), AddGlycoActivity.class);
                 startActivity(gecisYap);
             }
         });

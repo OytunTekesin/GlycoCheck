@@ -17,10 +17,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.oytuntekesin.authenticationapp.DegerEkleActivity;
+import com.oytuntekesin.authenticationapp.AddGlycoActivity;
 import com.oytuntekesin.authenticationapp.R;
-import com.oytuntekesin.authenticationapp.adapters.ExerciseHistoryAdapter;
-import com.oytuntekesin.authenticationapp.adapters.GlycoAdapter;
+import com.oytuntekesin.authenticationapp.adapters.PastExerciseAdapter;
 import com.oytuntekesin.authenticationapp.dto.ExerciseHistory;
 import com.oytuntekesin.authenticationapp.fragments.BaseFragment;
 
@@ -51,7 +50,7 @@ public class TabMyPastExercises extends BaseFragment {
                                 c.setEXERCISE_HISTORY_ID(d.getId());
                                 exerciseHistoryList.add(c);
                             }
-                            ExerciseHistoryAdapter adapter_items = new ExerciseHistoryAdapter(exerciseHistoryList);
+                            PastExerciseAdapter adapter_items = new PastExerciseAdapter(exerciseHistoryList);
 
                             RecyclerView recycler_view = rootView.findViewById(R.id.my_past_exercises);
                             LinearLayoutManager layoutManager = new LinearLayoutManager(_context);
@@ -80,7 +79,7 @@ public class TabMyPastExercises extends BaseFragment {
         btnAddMyPastExercise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent gecisYap = new Intent(getActivity().getApplicationContext(), DegerEkleActivity.class);
+                Intent gecisYap = new Intent(getActivity().getApplicationContext(), AddGlycoActivity.class);
                 startActivity(gecisYap);
             }
         });

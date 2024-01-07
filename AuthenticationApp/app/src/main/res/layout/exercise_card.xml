@@ -15,87 +15,33 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="16dp">
-
-        <!-- Sol Tarafta Egzersiz Adı ve İkon -->
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             app:cardCornerRadius="8dp"
             app:cardElevation="4dp">
-
-            <!-- Egzersiz İkonu (Örnek: Bir resim veya font ikonu) -->
             <ImageView
                 android:id="@+id/exerciseIcon"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
-                android:src="@drawable/ic_exercise"
-                android:background="@drawable/square_background"
-                android:padding="16dp"
+                android:layout_width="68dp"
+                android:layout_height="61dp"
                 android:layout_centerInParent="true"
-                android:contentDescription="Exercise Icon"/>
-
-            <!-- Egzersiz Adı -->
-            <TextView
-                android:id="@+id/exerciseName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_below="@id/exerciseIcon"
-                android:text="Ağırlık"
-                android:textSize="18sp"
-                android:gravity="center"
-                android:textColor="@android:color/black"/>
+                android:background="@drawable/square_background"
+                android:contentDescription="Exercise Icon"
+                android:padding="16dp"
+                android:src="@drawable/ic_exercise" />
         </RelativeLayout>
-
-        <!-- Sağ Tarafta Egzersiz Bilgileri -->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <!-- Egzersiz Süresi -->
             <TextView
-                android:id="@+id/exerciseDuration"
+                android:id="@+id/exerciseName"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="40 dakika"
-                android:textSize="16sp"
-                android:textColor="@android:color/black"
-                android:layout_alignParentTop="true"
-                android:gravity="center"/>
-
-            <!-- Harcanan Kalori -->
-            <TextView
-                android:id="@+id/burnedCalories"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="200 kalori"
-                android:textSize="16sp"
-                android:textColor="@android:color/black"
-                android:layout_below="@id/exerciseDuration"
-                android:gravity="center"/>
-
-
-            <TextView
-                android:id="@+id/descriptionTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/burnedCalories"
-                android:layout_marginTop="8dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
                 android:text="Bu bir açıklama metni."
-                android:textSize="16sp"
                 android:textColor="@android:color/black"
-                android:gravity="center"/>
-            <TextView
-                android:id="@+id/exerciseDateTime"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/descriptionTextView"
-                android:layout_marginTop="8dp"
-                android:text="1 Ocak 2023 - 23:23"
-                android:textSize="16sp"
-                android:textColor="@android:color/black"
-                android:gravity="center"/>
+                android:textSize="24sp" />
 
         </RelativeLayout>
     </LinearLayout>
