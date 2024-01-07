@@ -10,9 +10,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.oytuntekesin.authenticationapp.business.BaseBusiness;
 
 public class BaseFragment extends Fragment {
-    FirebaseFirestore _db;
-    FirebaseAuth _auth;
-    Context _context;
+    public FirebaseFirestore _db;
+    public FirebaseAuth _auth;
+    public Context _context;
     public BaseFragment(){
           _db = FirebaseFirestore.getInstance();
         _auth = FirebaseAuth.getInstance();
