@@ -12,7 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:background="@drawable/rounded_text_background">
 
 
         <RelativeLayout
@@ -25,8 +26,8 @@
 
             <ImageView
                 android:id="@+id/dietIcon"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:layout_centerInParent="true"
                 android:background="@drawable/square_background"
                 android:contentDescription="Diet Icon"
@@ -35,15 +36,13 @@
 
 
             <TextView
-                android:id="@+id/dietName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:layout_below="@id/dietIcon"
-                android:text="1.Diyetim"
                 android:textSize="18sp"
                 android:gravity="center"
-                android:textColor="@android:color/black"/>
+                android:textColor="@android:color/white"/>
         </RelativeLayout>
 
 
@@ -53,13 +52,23 @@
 
 
             <TextView
+                android:id="@+id/dietName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="DETOX DİYETİM"
+                android:textSize="16sp"
+                android:textColor="@android:color/holo_red_light"
+                android:layout_alignParentTop="true"
+                android:gravity="center"/>
+
+            <TextView
                 android:id="@+id/totalCalories"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Toplam Kalori: 1500cal"
                 android:textSize="16sp"
-                android:textColor="@android:color/black"
-                android:layout_alignParentTop="true"
+                android:textColor="@android:color/holo_green_dark"
+                android:layout_below="@id/dietName"
                 android:gravity="center"/>
 
 
@@ -67,9 +76,9 @@
                 android:id="@+id/duration"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="7 gün"
+                android:text="Uygulanacak Süre: 7 gün"
                 android:textSize="16sp"
-                android:textColor="@android:color/black"
+                android:textColor="@android:color/holo_blue_dark"
                 android:layout_below="@id/totalCalories"
                 android:gravity="center"/>
 
