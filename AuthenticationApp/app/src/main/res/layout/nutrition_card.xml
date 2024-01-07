@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
-    android:id="@+id/pastExerciseCard"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
     app:cardCornerRadius="8dp"
-    app:cardElevation="4dp"
-    >
+    app:cardElevation="4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,7 +14,7 @@
         android:orientation="horizontal"
         android:padding="16dp">
 
-        <!-- Sol Tarafta Egzersiz Adı ve İkon -->
+
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -24,79 +22,68 @@
             app:cardCornerRadius="8dp"
             app:cardElevation="4dp">
 
-            <!-- Egzersiz İkonu (Örnek: Bir resim veya font ikonu) -->
+
             <ImageView
-                android:id="@+id/pastExerciseIcon"
+                android:id="@+id/dietIcon"
                 android:layout_width="56dp"
                 android:layout_height="56dp"
                 android:layout_centerInParent="true"
                 android:background="@drawable/square_background"
-                android:contentDescription="Exercise Icon"
+                android:contentDescription="Diet Icon"
                 android:padding="16dp"
-                android:src="@drawable/ic_exercise" />
+                android:src="@drawable/ic_nutrition" />
 
-            <!-- Egzersiz Adı -->
+
             <TextView
-                android:id="@+id/pastExerciseName"
+                android:id="@+id/dietName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:layout_below="@id/pastExerciseIcon"
-                android:text="Ağırlık"
+                android:layout_below="@id/dietIcon"
+                android:text="1.Diyetim"
                 android:textSize="18sp"
                 android:gravity="center"
                 android:textColor="@android:color/black"/>
         </RelativeLayout>
 
-        <!-- Sağ Tarafta Egzersiz Bilgileri -->
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <!-- Egzersiz Süresi -->
+
             <TextView
-                android:id="@+id/pastExerciseDuration"
+                android:id="@+id/totalCalories"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="40 dakika"
+                android:text="Toplam Kalori: 1500cal"
                 android:textSize="16sp"
                 android:textColor="@android:color/black"
                 android:layout_alignParentTop="true"
                 android:gravity="center"/>
 
-            <!-- Harcanan Kalori -->
+
             <TextView
-                android:id="@+id/pastExerciseBurnedCalories"
+                android:id="@+id/duration"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="200 kalori"
+                android:text="7 gün"
                 android:textSize="16sp"
                 android:textColor="@android:color/black"
-                android:layout_below="@id/pastExerciseDuration"
+                android:layout_below="@id/totalCalories"
                 android:gravity="center"/>
 
 
             <TextView
-                android:id="@+id/pastExerciseDescriptionTextView"
+                android:id="@+id/dietitianName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/pastExerciseBurnedCalories"
+                android:layout_below="@id/duration"
                 android:layout_marginTop="8dp"
-                android:text="Bu bir açıklama metni."
+                android:text="Dyt.Ramazan Bülbül"
                 android:textSize="16sp"
                 android:textColor="@android:color/black"
                 android:gravity="center"/>
-            <TextView
-                android:id="@+id/pastExerciseDateTime"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/pastExerciseDescriptionTextView"
-                android:layout_marginTop="8dp"
-                android:text="1 Ocak 2023 - 23:23"
-                android:textSize="16sp"
-                android:textColor="@android:color/black"
-                android:gravity="center"/>
-
         </RelativeLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
