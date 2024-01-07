@@ -39,7 +39,7 @@ public class TabMyPastExercises extends BaseFragment {
         btnAddMyPastExercise = rootView.findViewById(R.id.add_my_past_exercise);
 
         List<ExerciseHistory> exerciseHistoryList = new ArrayList<ExerciseHistory>();
-        _db.collection("EXERCISE_HISTORY").whereEqualTo("USER_ID", _auth.getCurrentUser().getUid()).get()
+        _db.collection("EXERCISE_HISTORY").whereEqualTo("user_ID", _auth.getCurrentUser().getUid()).get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {

@@ -4,12 +4,34 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.ExerciseFragment">
+    <!-- Yapılan Süre -->
+    <TextView
+        android:id="@+id/textViewExerciseName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Egzersiz202"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"/>
+
+    <!-- Yapılan Süre Girişi -->
+    <EditText
+        android:id="@+id/editTextExerciseName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewExerciseName"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:textSize="30sp"
+        android:background="@drawable/edit_text_background"
+        android:inputType="text"
+        android:enabled="false"/>
 
     <!-- Yapılan Süre -->
     <TextView
         android:id="@+id/textViewExerciseDuration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/editTextExerciseName"
         android:text="Yapılan Süre (dakika):"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"/>
@@ -48,17 +70,40 @@
         android:background="@drawable/edit_text_background"
         android:inputType="numberDecimal"/>
 
+
+
     <TextView
-        android:id="@+id/textViewDateTimeEx"
+        android:id="@+id/textViewAdditionalNote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tarih ve Saat:"
+        android:text="Açıklama Notu:"
         android:layout_below="@id/editTextBurnedCalories"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"/>
 
     <EditText
-        android:id="@+id/pastExerciseDateTime"
+        android:id="@+id/editTextExerciseDescr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewAdditionalNote"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:textSize="30sp"
+        android:background="@drawable/edit_text_background"
+        android:inputType="textMultiLine"
+        android:lines="3"/>
+
+    <TextView
+        android:id="@+id/textViewDateTimeEx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tarih ve Saat:"
+        android:layout_below="@id/editTextExerciseDescr"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextExerciseDateTime"
         android:layout_below="@id/textViewDateTimeEx"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
@@ -77,7 +122,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Egzersizi Kaydet"
-        android:layout_below="@id/pastExerciseDateTime"
+        android:layout_below="@id/editTextExerciseDateTime"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"/>

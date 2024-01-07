@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.oytuntekesin.authenticationapp.AddExerciseActivity;
 import com.oytuntekesin.authenticationapp.AddGlycoActivity;
 import com.oytuntekesin.authenticationapp.R;
 import com.oytuntekesin.authenticationapp.dto.ExerciseHistory;
@@ -34,9 +35,9 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHo
         public ViewHolder(View view) {
             super(view);
 
-            exerciseCard = (CardView)view.findViewById(R.id.pastExerciseCard);
-            exerciseIcon = (ImageView) view.findViewById(R.id.pastExerciseIcon);
-            exerciseName = (TextView)view.findViewById(R.id.pastExerciseName);
+            exerciseCard = (CardView)view.findViewById(R.id.exerciseCard);
+            exerciseIcon = (ImageView) view.findViewById(R.id.exerciseIcon);
+            exerciseName = (TextView)view.findViewById(R.id.exerciseName);
         }
     }
 
@@ -64,10 +65,10 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHo
         holder.exerciseCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(holder.exerciseCard.getContext(), AddGlycoActivity.class);
+                Intent intent = new Intent(holder.exerciseIcon.getContext(), AddExerciseActivity.class);
                 intent.putExtra("EXERCISE_ID", exerciseList.get(position).getEXERCISE_ID());
                 intent.putExtra("EXERCISE_NAME", exerciseList.get(position).getEXERCISE_NAME());
-                holder.exerciseCard.getContext().startActivity(intent);
+                holder.exerciseIcon.getContext().startActivity(intent);
             }
         });
     }

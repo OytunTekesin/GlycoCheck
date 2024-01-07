@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.oytuntekesin.authenticationapp.AddExerciseActivity;
 import com.oytuntekesin.authenticationapp.AddGlycoActivity;
 import com.oytuntekesin.authenticationapp.R;
 import com.oytuntekesin.authenticationapp.dto.ExerciseHistory;
@@ -134,11 +135,11 @@ public class PastExerciseAdapter extends RecyclerView.Adapter<PastExerciseAdapte
         holder.pastExerciseDescriptionTextView.setText(pastExerciseList.get(position).getEXERCISE_DESCR());
         holder.pastExerciseDuration.setText(pastExerciseList.get(position).getEXERCISE_DURATION());
         holder.pastExerciseBurnedCalories.setText(pastExerciseList.get(position).getEXERCISE_CALORIES());
-        holder.pastExerciseDateTime.setText(tarih);
+        holder.pastExerciseDateTime.setText(tarih + " " + pastExerciseList.get(position).getEXERCISE_DATETIME().split(" ")[1]);
         holder.pastExerciseCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(holder.pastExerciseCard.getContext(), AddGlycoActivity.class);
+                Intent intent = new Intent(holder.pastExerciseCard.getContext(), AddExerciseActivity.class);
                 intent.putExtra("EXERCISE_HISTORY_ID", pastExerciseList.get(position).getEXERCISE_HISTORY_ID());
                 intent.putExtra("EXERCISE_ID", pastExerciseList.get(position).getEXERCISE_ID());
                 intent.putExtra("EXERCISE_NAME", pastExerciseList.get(position).getEXERCISE_NAME());
