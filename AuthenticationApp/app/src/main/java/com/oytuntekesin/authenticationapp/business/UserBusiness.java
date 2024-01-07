@@ -15,6 +15,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.oytuntekesin.authenticationapp.LoginActivity;
 import com.oytuntekesin.authenticationapp.MainActivity;
 import com.oytuntekesin.authenticationapp.R;
+import com.oytuntekesin.authenticationapp.dto.User;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,7 +23,6 @@ import java.util.Map;
 public class UserBusiness extends BaseBusiness {
     Context _context;
     public UserBusiness(Context context){
-        _auth = FirebaseAuth.getInstance();
         _context = context;
     }
 
@@ -65,13 +65,18 @@ public class UserBusiness extends BaseBusiness {
         }
         return null;
     }
-    public void Register(final String username, final String email, final String password){
+    public void Register(final User user){
         final ProgressDialog progressDialog = new ProgressDialog(_context);
         progressDialog.setMessage(_context.getString(R.string.loading_data));
         progressDialog.show();
-        _auth.createUserWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+        _auth.createUserWithEmailAndPassword(user.getEMAIL(), user.getPASSWORD()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
+
+                user.setUSER_ID(authResult.getUser().getUid());
+                user.setUSER_ROLE("USER");
+                _db.collection("USER_TABLE").document().set(user);
+
                 progressDialog.dismiss();
                 //Email doğrulama
                 Toast.makeText(_context.getApplicationContext(), _context.getString(R.string.login_success), Toast.LENGTH_SHORT).show();

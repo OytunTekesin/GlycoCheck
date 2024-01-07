@@ -1,4 +1,4 @@
-package com.oytuntekesin.authenticationapp;
+package com.oytuntekesin.authenticationapp.fragments;
 
 import android.content.Context;
 

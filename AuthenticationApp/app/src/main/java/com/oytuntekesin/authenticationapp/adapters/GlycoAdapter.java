@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -63,9 +65,62 @@ public class GlycoAdapter extends RecyclerView.Adapter<GlycoAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(final GlycoAdapter.ViewHolder holder, final int position) {
+        String dbTarih = gylcoList.get(position).getTARIH().split(" ")[0];
+        String[] tarihs = dbTarih.split("\\.");
+        String tarih = "";
+        switch (tarihs[1]){
+            case "01":
+                tarih = tarihs[0] + " Ocak " + tarihs[2];
+                break;
+            case "02":
+                tarih = tarihs[0] + " Şubat "+ tarihs[2];
+                break;
+            case "03":
+                tarih = tarihs[0] + " Mart "+ tarihs[2];
+                break;
+            case "04":
+                tarih = tarihs[0] + " Nisan "+ tarihs[2];
+                break;
+            case "05":
+                tarih = tarihs[0] + " Mayıs "+ tarihs[2];
+                break;
+            case "06":
+                tarih = tarihs[0] + " Haziran "+ tarihs[2];
+                break;
+            case "07":
+                tarih = tarihs[0] + " Temmuz "+ tarihs[2];
+                break;
+            case "08":
+                tarih = tarihs[0] + " Ağustos "+ tarihs[2];
+                break;
+            case "09":
+                tarih = tarihs[0] + " Eylül "+ tarihs[2];
+                break;
+            case "10":
+                tarih = tarihs[0] + " Ekim "+ tarihs[2];
+                break;
+            case "11":
+                tarih = tarihs[0] + " Kasım "+ tarihs[2];
+                break;
+            case "12":
+                tarih = tarihs[0] + " Aralık "+ tarihs[2];
+                break;
+            default:
+                tarih = dbTarih;
+                break;
+        }
         holder.circle.setText(gylcoList.get(position).getKAN_SEKERI());
+        Drawable drawable = ContextCompat.getDrawable(holder.circle.getContext(), R.drawable.circle_green_background);
+        if (80 < Integer.parseInt(gylcoList.get(position).getKAN_SEKERI()) && Integer.parseInt(gylcoList.get(position).getKAN_SEKERI()) < 120){
+            drawable = ContextCompat.getDrawable(holder.circle.getContext(), R.drawable.circle_green_background);
+        }else if ((70 < Integer.parseInt(gylcoList.get(position).getKAN_SEKERI()) && Integer.parseInt(gylcoList.get(position).getKAN_SEKERI()) < 80)|| (120 < Integer.parseInt(gylcoList.get(position).getKAN_SEKERI()) && Integer.parseInt(gylcoList.get(position).getKAN_SEKERI()) < 140)){
+            drawable = ContextCompat.getDrawable(holder.circle.getContext(), R.drawable.circle_orange_background);
+        }else {
+            drawable = ContextCompat.getDrawable(holder.circle.getContext(), R.drawable.circle_red_background);
+        }
+        holder.circle.setBackground(drawable);
         holder.toklukTextView.setText(gylcoList.get(position).getACLIK_TOKLUK());
-        holder.dateTextView.setText(gylcoList.get(position).getTARIH().split(" ")[0]);
+        holder.dateTextView.setText(tarih);
         holder.timeTextView.setText(gylcoList.get(position).getTARIH().split(" ")[1]);
         holder.descriptionTextView.setText(gylcoList.get(position).getACIKLAMA());
 

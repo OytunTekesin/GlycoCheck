@@ -7,6 +7,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import com.oytuntekesin.authenticationapp.databinding.ActivityMainBinding;
+import com.oytuntekesin.authenticationapp.fragments.ExerciseFragment;
+import com.oytuntekesin.authenticationapp.fragments.GlycoFragment;
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
@@ -26,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
             if (item.getItemId() == R.id.homeglyco) replaceFragment(new GlycoFragment());
             if (item.getItemId() == R.id.beslenme) replaceFragment(new BeslenmeFragment());
-            if (item.getItemId() == R.id.egzersiz) replaceFragment(new EgzersizFragment());
+            if (item.getItemId() == R.id.egzersiz) replaceFragment(new ExerciseFragment());
             if (item.getItemId() == R.id.settings) replaceFragment(new SettingsFragment());
 
             return true;

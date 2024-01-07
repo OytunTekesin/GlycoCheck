@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.oytuntekesin.authenticationapp.business.UserBusiness;
+import com.oytuntekesin.authenticationapp.dto.User;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -32,7 +33,11 @@ public class RegisterActivity extends AppCompatActivity {
                 UserBusiness userBusiness = new UserBusiness(view.getContext());
                 String message =  userBusiness.CheckUserRegister(txtUsername.getText().toString(), txtEmail.getText().toString(), txtPassword.getText().toString(), txtPasswordCheck.getText().toString());
                 if (message == null){
-                    userBusiness.Register(txtUsername.getText().toString(), txtEmail.getText().toString(), txtPassword.getText().toString());
+                    User user = new User();
+                    user.setUSER_ADI(txtUsername.getText().toString());
+                    user.setEMAIL(txtEmail.getText().toString());
+                    user.setPASSWORD(txtPassword.getText().toString());
+                    userBusiness.Register(user);
                 }else {
                     Toast.makeText(view.getContext().getApplicationContext(), message, Toast.LENGTH_SHORT).show();
                 }
