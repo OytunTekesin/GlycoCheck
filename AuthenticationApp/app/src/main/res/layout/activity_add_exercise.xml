@@ -1,0 +1,86 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.ExerciseFragment">
+
+    <!-- Yapılan Süre -->
+    <TextView
+        android:id="@+id/textViewExerciseDuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yapılan Süre (dakika):"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"/>
+
+    <!-- Yapılan Süre Girişi -->
+    <EditText
+        android:id="@+id/editTextExerciseDuration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewExerciseDuration"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:textSize="30sp"
+        android:background="@drawable/edit_text_background"
+        android:inputType="number"/>
+
+    <!-- Harcanan Kalori -->
+    <TextView
+        android:id="@+id/textViewBurnedCalories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Harcanan Kalori:"
+        android:layout_below="@id/editTextExerciseDuration"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"/>
+
+    <!-- Harcanan Kalori Girişi -->
+    <EditText
+        android:id="@+id/editTextBurnedCalories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewBurnedCalories"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:textSize="30sp"
+        android:background="@drawable/edit_text_background"
+        android:inputType="numberDecimal"/>
+
+    <TextView
+        android:id="@+id/textViewDateTimeEx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tarih ve Saat:"
+        android:layout_below="@id/editTextBurnedCalories"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"/>
+
+    <EditText
+        android:id="@+id/pastExerciseDateTime"
+        android:layout_below="@id/textViewDateTimeEx"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:background="@drawable/edit_text_background"
+        android:ems="10"
+        android:focusable="false"
+        android:inputType="text|date"/>
+
+
+    <!-- Kaydet Butonu -->
+    <Button
+        android:id="@+id/buttonSaveExercise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Egzersizi Kaydet"
+        android:layout_below="@id/pastExerciseDateTime"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"/>
+
+
+</RelativeLayout>
