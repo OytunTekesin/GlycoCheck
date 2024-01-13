@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.oytuntekesin.authenticationapp.business.UserBusiness;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
 
     private EditText txtEmail, txtPassword;
     Button btnLogin;
@@ -27,14 +27,18 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-
+        _context = LoginActivity.this;
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.INTERNET},100);
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) != PackageManager.PERMISSION_GRANTED) finishAffinity();
         }
 
+        if (_auth.getCurrentUser() != null){
+            Intent intent = new Intent(_context.getApplicationContext(), MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            _context.startActivity(intent);
+        }
 
         final UserBusiness userBusiness = new UserBusiness(getApplicationContext());
         txtEmail = findViewById(R.id.email);

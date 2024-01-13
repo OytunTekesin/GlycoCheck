@@ -9,7 +9,7 @@
         android:id="@+id/textViewExerciseName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Egzersiz202"
+        android:text="Egzersiz"
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"/>
 

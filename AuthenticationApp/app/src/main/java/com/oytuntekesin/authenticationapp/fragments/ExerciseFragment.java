@@ -27,17 +27,17 @@ public class ExerciseFragment extends BaseFragment {
 
         ViewPager viewPager = rootView.findViewById(R.id.exerciseViewPager);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
-        adapter.FragmentEkle(new TabMyExercises(), "Egzersizlerim");
         adapter.FragmentEkle(new TabMyPastExercises(), "Geçmiş Egzersizler");
+        adapter.FragmentEkle(new TabMyExercises(), "Egzersizlerim");
 
         viewPager.setAdapter(adapter);
 
         TabLayout tabLayout = rootView.findViewById(R.id.exerciseTabs);
         tabLayout.setupWithViewPager(viewPager);
 
-        tabLayout.getTabAt(0);
-        tabLayout.getTabAt(1);
-        tabLayout.getTabAt(2);
+//        tabLayout.getTabAt(0);
+//        tabLayout.getTabAt(1);
+//        tabLayout.getTabAt(2);
 
         return rootView;
     }

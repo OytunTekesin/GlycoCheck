@@ -8,13 +8,16 @@ import com.google.firebase.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.oytuntekesin.authenticationapp.business.BaseBusiness;
+import com.oytuntekesin.authenticationapp.business.GlycoBusiness;
 
 public class BaseFragment extends Fragment {
     public FirebaseFirestore _db;
     public FirebaseAuth _auth;
     public Context _context;
+    public GlycoBusiness _glycoBusiness;
     public BaseFragment(){
           _db = FirebaseFirestore.getInstance();
         _auth = FirebaseAuth.getInstance();
+        _glycoBusiness = new GlycoBusiness();
     }
 }

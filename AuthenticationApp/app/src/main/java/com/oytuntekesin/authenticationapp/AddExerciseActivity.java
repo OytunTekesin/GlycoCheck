@@ -24,6 +24,7 @@ import java.util.Locale;
 public class AddExerciseActivity extends BaseActivity {
     String EXERCISE_HISTORY_ID = "";
     String EXERCISE_ID = "";
+    String EXERCISE_NAME = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +40,6 @@ public class AddExerciseActivity extends BaseActivity {
 
         EXERCISE_HISTORY_ID = "";
         EXERCISE_ID= "";
-        String EXERCISE_NAME= "";
         String EXERCISE_CALORIES= "";
         String EXERCISE_DATETIME= "";
         String EXERCISE_DESCR= "";
@@ -136,9 +136,12 @@ public class AddExerciseActivity extends BaseActivity {
                 exercise.setEXERCISE_CALORIES(burnedCalories);
                 exercise.setEXERCISE_DESCR(exerciseDescr);
                 exercise.setEXERCISE_DATETIME(exerciseDateTime);
+                exercise.setEXERCISE_NAME(EXERCISE_NAME);
                 boolean isSuccess = _exerciseBusiness.setExerciseHistoryData(_context, exercise);
                 if (isSuccess) {
-                    finish();
+                    Intent gecisYap = new Intent(getApplicationContext(), MainActivity.class);
+                    gecisYap.putExtra("TAB", "1");
+                    startActivity(gecisYap);
                 }
             }
         });

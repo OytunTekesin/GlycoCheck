@@ -38,43 +38,7 @@ public class GlycoFragment extends BaseFragment {
         FloatingActionButton btnGlycoAdd;
         btnGlycoAdd = rootView.findViewById(R.id.pet_add);
 
-        List<Glyco> glycoList = new ArrayList<Glyco>();
-        _db.collection("GLYCO_TABLE").whereEqualTo("user_ID", _auth.getCurrentUser().getUid()).get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        if (!queryDocumentSnapshots.isEmpty()) {
-                            List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
-                            for (DocumentSnapshot d : list) {
-                                Glyco c = d.toObject(Glyco.class);
-                                c.setID(d.getId());
-                                glycoList.add(c);
-                            }
-                            GlycoAdapter adapter_items = new GlycoAdapter(glycoList);
-
-                            RecyclerView recycler_view = rootView.findViewById(R.id.glycoItemList);
-                            LinearLayoutManager layoutManager = new LinearLayoutManager(_context);
-
-                            layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-                            layoutManager.scrollToPosition(0);
-
-                            recycler_view.setLayoutManager(layoutManager);
-                            recycler_view.setHasFixedSize(true);
-                            recycler_view.setNestedScrollingEnabled(false);
-                            recycler_view.setAdapter(adapter_items);
-                            recycler_view.setItemAnimator(new DefaultItemAnimator());
-                        } else {
-                            Toast.makeText(_context, "Veri kaydı bulunamadı!", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        // if we do not get any data or any error we are displaying
-                        // a toast message that we do not get any data
-                        Toast.makeText(_context, "Fail to get the data.", Toast.LENGTH_SHORT).show();
-                    }
-                });
+        _glycoBusiness.getGlycoCardList(rootView);
 
         btnGlycoAdd.setOnClickListener(new View.OnClickListener() {
             @Override

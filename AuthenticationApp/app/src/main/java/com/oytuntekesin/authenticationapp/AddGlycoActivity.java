@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -159,7 +160,9 @@ public class AddGlycoActivity extends BaseActivity {
                 glyco.setTARIH(datetime);
                 boolean isSuccess = _glycoBusiness.setGlycoData(_context, glyco);
                 if (isSuccess) {
-                    finish();
+                    Intent gecisYap = new Intent(getApplicationContext(), MainActivity.class);
+                    gecisYap.putExtra("TAB", "0");
+                    startActivity(gecisYap);
                 }
             }
         });
