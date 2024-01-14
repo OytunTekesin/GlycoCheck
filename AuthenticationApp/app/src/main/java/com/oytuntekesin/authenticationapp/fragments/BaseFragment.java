@@ -12,7 +12,10 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.oytuntekesin.authenticationapp.business.BaseBusiness;
+import com.oytuntekesin.authenticationapp.business.ExerciseBusiness;
 import com.oytuntekesin.authenticationapp.business.GlycoBusiness;
+import com.oytuntekesin.authenticationapp.business.NutritionBusiness;
+import com.oytuntekesin.authenticationapp.business.UserBusiness;
 import com.oytuntekesin.authenticationapp.dto.User;
 
 import java.util.List;
@@ -22,10 +25,15 @@ public class BaseFragment extends Fragment {
     public FirebaseAuth _auth;
     public Context _context;
     public GlycoBusiness _glycoBusiness;
-    User _logonUser;
+    public ExerciseBusiness _exerciseBusiness;
+    public UserBusiness _userBusiness;
+    public NutritionBusiness _nutritionBusiness;
     public BaseFragment(){
         _db = FirebaseFirestore.getInstance();
         _auth = FirebaseAuth.getInstance();
         _glycoBusiness = new GlycoBusiness();
+        _exerciseBusiness = new ExerciseBusiness();
+        _userBusiness = new UserBusiness();
+        _nutritionBusiness = new NutritionBusiness();
     }
 }

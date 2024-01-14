@@ -7,15 +7,26 @@
     android:layout_height="match_parent"
     android:layout_marginTop="0dp"
     android:layout_marginBottom="0dp">
-
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:layout_height="match_parent"
+        >
+        <Spinner
+            android:id="@+id/spinUserGlyco"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/second_layer"
+            android:gravity="center"
+            android:spinnerMode="dropdown"
+            android:textColor="#fff"
+            android:textAlignment="center"
+            />
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/glycoItemList"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_below="@id/spinUserGlyco"
+            />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/btnGlycoAdd"

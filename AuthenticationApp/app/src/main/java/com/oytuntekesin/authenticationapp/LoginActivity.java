@@ -40,7 +40,7 @@ public class LoginActivity extends BaseActivity {
             _context.startActivity(intent);
         }
 
-        final UserBusiness userBusiness = new UserBusiness(getApplicationContext());
+        final UserBusiness userBusiness = new UserBusiness();
         txtEmail = findViewById(R.id.email);
         txtPassword = findViewById(R.id.pasword);
 
@@ -58,9 +58,9 @@ public class LoginActivity extends BaseActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String message = userBusiness.CheckUserLogin(txtEmail.getText().toString(), txtPassword.getText().toString());
+                String message = userBusiness.CheckUserLogin(_context, txtEmail.getText().toString(), txtPassword.getText().toString());
                 if (message == null){
-                    userBusiness.Login(txtEmail.getText().toString(), txtPassword.getText().toString());
+                    userBusiness.Login(_context,txtEmail.getText().toString(), txtPassword.getText().toString());
                 }else {
                     Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
                 }

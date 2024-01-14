@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,6 +23,7 @@ import com.oytuntekesin.authenticationapp.AddGlycoActivity;
 import com.oytuntekesin.authenticationapp.R;
 import com.oytuntekesin.authenticationapp.adapters.PastExerciseAdapter;
 import com.oytuntekesin.authenticationapp.dto.ExerciseHistory;
+import com.oytuntekesin.authenticationapp.dto.User;
 import com.oytuntekesin.authenticationapp.fragments.BaseFragment;
 
 import java.util.ArrayList;
@@ -35,54 +38,50 @@ public class TabMyPastExercises extends BaseFragment {
         View rootView = inflater.inflate(R.layout.tab_my_past_exercises, container, false);
         _context = rootView.getContext();
 
-        FloatingActionButton btnAddMyPastExercise;
-        btnAddMyPastExercise = rootView.findViewById(R.id.add_my_past_exercise);
-
-        List<ExerciseHistory> exerciseHistoryList = new ArrayList<ExerciseHistory>();
-        _db.collection("EXERCISE_HISTORY").whereEqualTo("user_ID", _auth.getCurrentUser().getUid()).get()
+//        FloatingActionButton btnAddMyPastExercise = rootView.findViewById(R.id.add_my_past_exercise);
+        Spinner spinUserExercise = rootView.findViewById(R.id.spinUserExercise);
+        spinUserExercise.setVisibility(View.GONE);
+        _db.collection("USER_TABLE").whereEqualTo("user_ID", _auth.getCurrentUser().getUid()).get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         if (!queryDocumentSnapshots.isEmpty()) {
                             List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
                             for (DocumentSnapshot d : list) {
-                                ExerciseHistory c = d.toObject(ExerciseHistory.class);
-                                c.setEXERCISE_HISTORY_ID(d.getId());
-                                exerciseHistoryList.add(c);
+                                User c = d.toObject(User.class);
+                                if (!c.getUSER_ROLE().equalsIgnoreCase("USER")){
+                                    spinUserExercise.setVisibility(View.VISIBLE);
+                                }
                             }
-                            PastExerciseAdapter adapter_items = new PastExerciseAdapter(exerciseHistoryList);
-
-                            RecyclerView recycler_view = rootView.findViewById(R.id.my_past_exercises);
-                            LinearLayoutManager layoutManager = new LinearLayoutManager(_context);
-
-                            layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-                            layoutManager.scrollToPosition(0);
-
-                            recycler_view.setLayoutManager(layoutManager);
-                            recycler_view.setHasFixedSize(true);
-                            recycler_view.setNestedScrollingEnabled(false);
-                            recycler_view.setAdapter(adapter_items);
-                            recycler_view.setItemAnimator(new DefaultItemAnimator());
-                        } else {
-                            Toast.makeText(_context, "Veri kaydı bulunamadı!", Toast.LENGTH_SHORT).show();
                         }
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        // if we do not get any data or any error we are displaying
-                        // a toast message that we do not get any data
-                        Toast.makeText(_context, "Fail to get the data.", Toast.LENGTH_SHORT).show();
                     }
                 });
 
-        btnAddMyPastExercise.setOnClickListener(new View.OnClickListener() {
+
+        _userBusiness.getUserListForSpinner(_context, spinUserExercise);
+        _exerciseBusiness.getExerciseHistoryCardList(rootView, _auth.getCurrentUser().getUid());
+
+
+//        btnAddMyPastExercise.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        });
+        spinUserExercise.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onClick(View view) {
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+
+                User selectedUser = (User) parentView.getItemAtPosition(position);
+                _exerciseBusiness.getExerciseHistoryCardList(rootView, selectedUser.getUSER_ID());
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
 
             }
         });
-
         return rootView;
     }
 }

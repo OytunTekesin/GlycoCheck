@@ -5,15 +5,25 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.NutritionFragment">
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
+        <Spinner
+            android:id="@+id/spinUserNutrition"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/second_layer"
+            android:gravity="center"
+            android:spinnerMode="dropdown"
+            android:textColor="#fff"
+            android:textAlignment="center"
+            />
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/nutritionList"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_below="@id/spinUserNutrition"
+            />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/nutrition_add"

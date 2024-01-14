@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -43,8 +45,9 @@ public class NutritionFragment extends BaseFragment {
         _context = rootView.getContext();
 
         FloatingActionButton btnNutritionAdd = rootView.findViewById(R.id.nutrition_add);
+        Spinner spinUserNutrition = rootView.findViewById(R.id.spinUserNutrition);
         btnNutritionAdd.hide();
-
+        spinUserNutrition.setVisibility(View.GONE);
         _db.collection("USER_TABLE").whereEqualTo("user_ID", _auth.getCurrentUser().getUid()).get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
@@ -52,114 +55,37 @@ public class NutritionFragment extends BaseFragment {
                         if (!queryDocumentSnapshots.isEmpty()) {
                             List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
                             for (DocumentSnapshot d : list) {
-                                User cd = d.toObject(User.class);
-                                _logonUser = cd;
+                                User c = d.toObject(User.class);
+                                if (!c.getUSER_ROLE().equalsIgnoreCase("USER")){
+                                    btnNutritionAdd.show();
+                                    spinUserNutrition.setVisibility(View.VISIBLE);
+                                }
                             }
-
-                            List<Nutrition> nutritionList = new ArrayList<Nutrition>();
-                            if (!_logonUser.getUSER_ROLE().equalsIgnoreCase("USER")){
-                                btnNutritionAdd.show();
-                                _db.collection("NUTRITION_TABLE").get()
-                                        .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                                            @Override
-                                            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                                                if (!queryDocumentSnapshots.isEmpty()) {
-                                                    List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
-                                                    for (DocumentSnapshot d : list) {
-                                                        Nutrition c = d.toObject(Nutrition.class);
-                                                        String tarih = c.getNUTRITION_DURATION();
-                                                        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-                                                        try {
-                                                            Date date = dateFormat.parse(tarih);
-                                                            if (date.after(new Date())){
-                                                                c.setNUTRITION_ID(d.getId());
-                                                                nutritionList.add(c);
-                                                            }
-                                                        } catch (ParseException e) {
-                                                            System.out.println("Parse hatası: " + e.getMessage());
-                                                        }
-                                                    }
-                                                    NutritionAdapter adapter_items = new NutritionAdapter(nutritionList);
-
-                                                    RecyclerView recycler_view = rootView.findViewById(R.id.nutritionList);
-                                                    LinearLayoutManager layoutManager = new LinearLayoutManager(_context);
-
-                                                    layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-                                                    layoutManager.scrollToPosition(0);
-
-                                                    recycler_view.setLayoutManager(layoutManager);
-                                                    recycler_view.setHasFixedSize(true);
-                                                    recycler_view.setNestedScrollingEnabled(false);
-                                                    recycler_view.setAdapter(adapter_items);
-                                                    recycler_view.setItemAnimator(new DefaultItemAnimator());
-                                                } else {
-                                                    Toast.makeText(_context, "Veri kaydı bulunamadı!", Toast.LENGTH_SHORT).show();
-                                                }
-                                            }
-                                        }).addOnFailureListener(new OnFailureListener() {
-                                            @Override
-                                            public void onFailure(@NonNull Exception e) {
-                                                // if we do not get any data or any error we are displaying
-                                                // a toast message that we do not get any data
-                                                Toast.makeText(_context, "Fail to get the data.", Toast.LENGTH_SHORT).show();
-                                            }
-                                        });
-                            }else{
-                                _db.collection("NUTRITION_TABLE").whereEqualTo("user_ID", _logonUser.getUSER_ID()).get()
-                                        .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                                            @Override
-                                            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                                                if (!queryDocumentSnapshots.isEmpty()) {
-                                                    List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
-                                                    for (DocumentSnapshot d : list) {
-                                                        Nutrition c = d.toObject(Nutrition.class);
-                                                        String tarih = c.getNUTRITION_DURATION();
-                                                        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
-                                                        try {
-                                                            Date date = dateFormat.parse(tarih);
-                                                            if (date.after(new Date())){
-                                                                c.setNUTRITION_ID(d.getId());
-                                                                nutritionList.add(c);
-                                                            }
-                                                        } catch (ParseException e) {
-                                                            System.out.println("Parse hatası: " + e.getMessage());
-                                                        }
-                                                    }
-                                                    NutritionAdapter adapter_items = new NutritionAdapter(nutritionList);
-
-                                                    RecyclerView recycler_view = rootView.findViewById(R.id.nutritionList);
-                                                    LinearLayoutManager layoutManager = new LinearLayoutManager(_context);
-
-                                                    layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-                                                    layoutManager.scrollToPosition(0);
-
-                                                    recycler_view.setLayoutManager(layoutManager);
-                                                    recycler_view.setHasFixedSize(true);
-                                                    recycler_view.setNestedScrollingEnabled(false);
-                                                    recycler_view.setAdapter(adapter_items);
-                                                    recycler_view.setItemAnimator(new DefaultItemAnimator());
-                                                } else {
-                                                    Toast.makeText(_context, "Veri kaydı bulunamadı!", Toast.LENGTH_SHORT).show();
-                                                }
-                                            }
-                                        }).addOnFailureListener(new OnFailureListener() {
-                                            @Override
-                                            public void onFailure(@NonNull Exception e) {
-                                                // if we do not get any data or any error we are displaying
-                                                // a toast message that we do not get any data
-                                                Toast.makeText(_context, "Fail to get the data.", Toast.LENGTH_SHORT).show();
-                                            }
-                                        });
-                            }
-
                         }
                     }
                 });
+
+        _userBusiness.getUserListForSpinner(_context, spinUserNutrition);
+        _nutritionBusiness.getNutritionCardList(rootView, _auth.getCurrentUser().getUid());
         btnNutritionAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent gecisYap = new Intent(getActivity().getApplicationContext(), AddNutritionActivity.class);
                 startActivity(gecisYap);
+            }
+        });
+        spinUserNutrition.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+
+                User selectedUser = (User) parentView.getItemAtPosition(position);
+                _nutritionBusiness.getNutritionCardList(rootView, selectedUser.getUSER_ID());
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // Herhangi bir şey seçilmediğinde yapılacak işlemleri buraya ekleyebilirsiniz.
             }
         });
         return rootView;

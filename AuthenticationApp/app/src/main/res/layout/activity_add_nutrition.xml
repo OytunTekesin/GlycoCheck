@@ -8,13 +8,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Kullanıcı:"
-        android:textSize="20sp"
-        android:layout_marginTop="16dp"/>
+        android:textSize="16sp"/>
     <Spinner
         android:id="@+id/spinNutritionUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:textSize="16sp"
         android:background="@drawable/edit_text_background"
         />
     <!-- Diyet Adı -->
@@ -23,17 +22,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Diyet Adı:"
-        android:textSize="20sp"
-        android:layout_marginTop="16dp"/>
+        android:textSize="20sp"/>
 
     <EditText
         android:id="@+id/editTextDietName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
-        android:textSize="20sp"
-        android:background="@drawable/edit_text_background"
-        android:layout_marginBottom="16dp"/>
+        android:textSize="16sp"
+        android:background="@drawable/edit_text_background"/>
 
     <!-- Diyet Bitiş Tarihi -->
     <TextView
@@ -41,16 +38,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Diyet Bitiş Tarihi:"
-        android:textSize="20sp"
-        android:layout_marginTop="16dp"/>
+        android:textSize="20sp"/>
 
     <EditText
         android:id="@+id/editTextMealDuration"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:background="@drawable/edit_text_background"
-        android:layout_marginBottom="16dp"
         android:ems="10"
         android:hint="GG/AA/YYYY SS:DD"
         android:focusable="false"
@@ -75,7 +70,8 @@
         android:background="@drawable/edit_text_background"
         android:inputType="textMultiLine"
         android:minLines="5"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:gravity="top"/>
 
 
     <Button
@@ -83,7 +79,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|top"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:text="Kaydet" />
+<Button
+        android:id="@+id/buttonMealDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|top"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Sil" />
 </LinearLayout>

@@ -18,6 +18,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.oytuntekesin.authenticationapp.R;
 import com.oytuntekesin.authenticationapp.adapters.GlycoAdapter;
 import com.oytuntekesin.authenticationapp.dto.Glyco;
+import com.oytuntekesin.authenticationapp.dto.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,9 +68,9 @@ public class GlycoBusiness extends BaseBusiness{
         return true;
     }
 
-    public void getGlycoCardList(View rootview){
+    public void getGlycoCardList(View rootView, String USER_ID){
         List<Glyco> glycoList = new ArrayList<Glyco>();
-        _db.collection("GLYCO_TABLE").whereEqualTo("user_ID", _auth.getCurrentUser().getUid()).get()
+        _db.collection("GLYCO_TABLE").whereEqualTo("user_ID", USER_ID).get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -82,7 +83,7 @@ public class GlycoBusiness extends BaseBusiness{
                             }
                             GlycoAdapter adapter_items = new GlycoAdapter(glycoList);
 
-                            RecyclerView recycler_view = rootview.findViewById(R.id.glycoItemList);
+                            RecyclerView recycler_view = rootView.findViewById(R.id.glycoItemList);
                             LinearLayoutManager layoutManager = new LinearLayoutManager(_context);
 
                             layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -94,15 +95,38 @@ public class GlycoBusiness extends BaseBusiness{
                             recycler_view.setAdapter(adapter_items);
                             recycler_view.setItemAnimator(new DefaultItemAnimator());
                         } else {
-                            Toast.makeText(_context, "Veri kaydı bulunamadı!", Toast.LENGTH_SHORT).show();
-                        }
+                            Toast.makeText(rootView.getContext(), "Veri kaydı bulunamadı!", Toast.LENGTH_SHORT).show();
+                            GlycoAdapter adapter_items = new GlycoAdapter(glycoList);
+
+                            RecyclerView recycler_view = rootView.findViewById(R.id.glycoItemList);
+                            LinearLayoutManager layoutManager = new LinearLayoutManager(_context);
+
+                            layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+                            layoutManager.scrollToPosition(0);
+
+                            recycler_view.setLayoutManager(layoutManager);
+                            recycler_view.setHasFixedSize(true);
+                            recycler_view.setNestedScrollingEnabled(false);
+                            recycler_view.setAdapter(adapter_items);
+                            recycler_view.setItemAnimator(new DefaultItemAnimator());                        }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        // if we do not get any data or any error we are displaying
-                        // a toast message that we do not get any data
-                        Toast.makeText(_context, "Fail to get the data.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(rootView.getContext(), "Veri kaydı bulunamadı!", Toast.LENGTH_SHORT).show();
+                        GlycoAdapter adapter_items = new GlycoAdapter(glycoList);
+
+                        RecyclerView recycler_view = rootView.findViewById(R.id.glycoItemList);
+                        LinearLayoutManager layoutManager = new LinearLayoutManager(_context);
+
+                        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+                        layoutManager.scrollToPosition(0);
+
+                        recycler_view.setLayoutManager(layoutManager);
+                        recycler_view.setHasFixedSize(true);
+                        recycler_view.setNestedScrollingEnabled(false);
+                        recycler_view.setAdapter(adapter_items);
+                        recycler_view.setItemAnimator(new DefaultItemAnimator());
                     }
                 });
     }

@@ -47,6 +47,8 @@ public class AddNutritionActivity extends BaseActivity {
         EditText editTextDietContent = findViewById(R.id.editTextDietContent);
         Spinner spinNutritionUser = findViewById(R.id.spinNutritionUser);
         Button buttonMealSave = findViewById(R.id.buttonMealSave);
+        Button buttonMealDelete = findViewById(R.id.buttonMealDelete);
+
         List<User> users = new ArrayList<User>();
         _db.collection("USER_TABLE").get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -173,10 +175,20 @@ public class AddNutritionActivity extends BaseActivity {
                 User user = (User) spinNutritionUser.getSelectedItem();
                 nutrition.setUSER_ID(user.getUSER_ID());
                 boolean isSuccess = _nutritionBusiness.setNutritionData(_context, nutrition);
-
                 if (isSuccess) {
                     Intent gecisYap = new Intent(getApplicationContext(), MainActivity.class);
-                    gecisYap.putExtra("TAB", 2);
+                    gecisYap.putExtra("TAB", "2");
+                    startActivity(gecisYap);
+                }
+            }
+        });
+        buttonMealDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean isSuccess = _nutritionBusiness.delNutritionData(_context, NUTRITION_ID);
+                if (isSuccess) {
+                    Intent gecisYap = new Intent(getApplicationContext(), MainActivity.class);
+                    gecisYap.putExtra("TAB", "2");
                     startActivity(gecisYap);
                 }
             }
