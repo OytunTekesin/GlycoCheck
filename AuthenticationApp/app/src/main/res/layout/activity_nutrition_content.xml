@@ -1,0 +1,46 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="16dp"
+    android:orientation="vertical"
+    tools:context=".NutritionContentActivity">
+
+    <!-- Diyet Adı -->
+    <TextView
+        android:id="@+id/textViewDietName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Diyet Adı:"
+        android:textSize="20sp"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Diyet Bitiş Tarihi -->
+    <TextView
+        android:id="@+id/textViewEndDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Diyet Bitiş Tarihi:"
+        android:textSize="20sp"
+        android:layout_marginTop="16dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Açıklma :"
+        android:textSize="20sp"
+        android:layout_marginTop="16dp"/>
+    <!-- ScrollView içinde Diyet İçeriği -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1">
+        <TextView
+            android:id="@+id/textViewDietContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:text=""
+            android:textSize="18sp" />
+    </ScrollView>
+</LinearLayout>

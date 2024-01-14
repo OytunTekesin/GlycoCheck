@@ -43,4 +43,17 @@ public class ExerciseBusiness extends BaseBusiness{
 
         return true;
     }
+
+    public boolean delExerciseData(Context context, String EXERCISE_HISTORY_ID){
+        if (!EXERCISE_HISTORY_ID.isEmpty()){
+            _db.collection("EXERCISE_HISTORY").document(EXERCISE_HISTORY_ID).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    Toast.makeText(context, "Silindi.", Toast.LENGTH_LONG).show();
+                }
+            });
+        }
+        return true;
+    }
+
 }

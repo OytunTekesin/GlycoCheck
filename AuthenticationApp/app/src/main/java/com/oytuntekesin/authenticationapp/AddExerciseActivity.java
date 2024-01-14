@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -16,6 +17,7 @@ import android.widget.TimePicker;
 import com.oytuntekesin.authenticationapp.dto.ExerciseHistory;
 import com.oytuntekesin.authenticationapp.dto.ExerciseTable;
 import com.oytuntekesin.authenticationapp.dto.Glyco;
+import com.oytuntekesin.authenticationapp.helpers.NotificationHelper;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -37,7 +39,8 @@ public class AddExerciseActivity extends BaseActivity {
         EditText editTextExerciseDescr = findViewById(R.id.editTextExerciseDescr);
         EditText editTextExerciseDateTime = findViewById(R.id.editTextExerciseDateTime);
         Button buttonSave = findViewById(R.id.buttonSaveExercise);
-
+        Button buttonDelete = findViewById(R.id.buttonDeleteExercise);
+        buttonDelete.setVisibility(View.GONE);
         EXERCISE_HISTORY_ID = "";
         EXERCISE_ID= "";
         String EXERCISE_CALORIES= "";
@@ -56,6 +59,7 @@ public class AddExerciseActivity extends BaseActivity {
             EXERCISE_DURATION = intent.getStringExtra("EXERCISE_DURATION");
             if (EXERCISE_HISTORY_ID != null && !EXERCISE_HISTORY_ID.isEmpty()){
                 buttonSave.setText("Düzenle");
+                buttonDelete.setVisibility(View.VISIBLE);
                 editTextExerciseDuration.setText(EXERCISE_DURATION);
                 editTextBurnedCalories.setText(EXERCISE_CALORIES);
                 editTextExerciseDescr.setText(EXERCISE_DESCR);
@@ -138,6 +142,17 @@ public class AddExerciseActivity extends BaseActivity {
                 exercise.setEXERCISE_DATETIME(exerciseDateTime);
                 exercise.setEXERCISE_NAME(EXERCISE_NAME);
                 boolean isSuccess = _exerciseBusiness.setExerciseHistoryData(_context, exercise);
+                if (isSuccess) {
+                    Intent gecisYap = new Intent(getApplicationContext(), MainActivity.class);
+                    gecisYap.putExtra("TAB", "1");
+                    startActivity(gecisYap);
+                }
+            }
+        });
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean isSuccess = _exerciseBusiness.delExerciseData(_context, EXERCISE_HISTORY_ID);
                 if (isSuccess) {
                     Intent gecisYap = new Intent(getApplicationContext(), MainActivity.class);
                     gecisYap.putExtra("TAB", "1");

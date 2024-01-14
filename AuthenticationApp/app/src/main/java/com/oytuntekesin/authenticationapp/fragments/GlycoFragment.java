@@ -35,8 +35,7 @@ public class GlycoFragment extends BaseFragment {
         View rootView = inflater.inflate(R.layout.fragment_glyco, container, false);
         _context = rootView.getContext();
 
-        FloatingActionButton btnGlycoAdd;
-        btnGlycoAdd = rootView.findViewById(R.id.pet_add);
+        FloatingActionButton btnGlycoAdd = rootView.findViewById(R.id.btnGlycoAdd);
 
         _glycoBusiness.getGlycoCardList(rootView);
 

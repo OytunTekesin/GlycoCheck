@@ -26,6 +26,9 @@ public class UserBusiness extends BaseBusiness {
         _context = context;
     }
 
+    public FirebaseUser getLoginUser() {
+        return _auth.getCurrentUser();
+    }
     public String CheckUserLogin(String email, String password) {
         if (email.isEmpty() || password.isEmpty()){
             return _context.getString(R.string.auth_data_empty);

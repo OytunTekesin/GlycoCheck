@@ -1,0 +1,89 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kullanıcı:"
+        android:textSize="20sp"
+        android:layout_marginTop="16dp"/>
+    <Spinner
+        android:id="@+id/spinNutritionUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edit_text_background"
+        />
+    <!-- Diyet Adı -->
+    <TextView
+        android:id="@+id/textViewDietName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Diyet Adı:"
+        android:textSize="20sp"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextDietName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:textSize="20sp"
+        android:background="@drawable/edit_text_background"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Diyet Bitiş Tarihi -->
+    <TextView
+        android:id="@+id/textViewMealDuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Diyet Bitiş Tarihi:"
+        android:textSize="20sp"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextMealDuration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:background="@drawable/edit_text_background"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:hint="GG/AA/YYYY SS:DD"
+        android:focusable="false"
+        android:clickable="true"
+        android:inputType="text|date"/>
+
+    <!-- Diyet İçeriği -->
+    <TextView
+        android:id="@+id/textViewDietContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Diyet İçeriği:"
+        android:textSize="20sp"
+        android:layout_marginTop="16dp"
+        />
+
+    <EditText
+        android:id="@+id/editTextDietContent"
+        android:layout_width="match_parent"
+        android:layout_height="394dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/edit_text_background"
+        android:inputType="textMultiLine"
+        android:minLines="5"
+        android:textSize="20sp" />
+
+
+    <Button
+        android:id="@+id/buttonMealSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|top"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Kaydet" />
+</LinearLayout>

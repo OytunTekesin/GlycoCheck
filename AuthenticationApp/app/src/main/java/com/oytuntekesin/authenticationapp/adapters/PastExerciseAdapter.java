@@ -133,8 +133,8 @@ public class PastExerciseAdapter extends RecyclerView.Adapter<PastExerciseAdapte
         });
 
         holder.pastExerciseDescriptionTextView.setText(pastExerciseList.get(position).getEXERCISE_DESCR());
-        holder.pastExerciseDuration.setText(pastExerciseList.get(position).getEXERCISE_DURATION());
-        holder.pastExerciseBurnedCalories.setText(pastExerciseList.get(position).getEXERCISE_CALORIES());
+        holder.pastExerciseDuration.setText("Süre: " + pastExerciseList.get(position).getEXERCISE_DURATION() + "dk");
+        holder.pastExerciseBurnedCalories.setText("Yakılan Kalori: " + pastExerciseList.get(position).getEXERCISE_CALORIES() + "cal");
         holder.pastExerciseDateTime.setText(tarih + " " + pastExerciseList.get(position).getEXERCISE_DATETIME().split(" ")[1]);
         holder.pastExerciseCard.setOnClickListener(new View.OnClickListener() {
             @Override

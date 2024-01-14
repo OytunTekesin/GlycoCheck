@@ -55,6 +55,17 @@ public class GlycoBusiness extends BaseBusiness{
 
         return true;
     }
+    public boolean delGlycoData(Context context, String GLYCO_ID){
+        if (!GLYCO_ID.isEmpty()){
+            _db.collection("GLYCO_TABLE").document(GLYCO_ID).delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    Toast.makeText(context, "Silindi.", Toast.LENGTH_LONG).show();
+                }
+            });
+        }
+        return true;
+    }
 
     public void getGlycoCardList(View rootview){
         List<Glyco> glycoList = new ArrayList<Glyco>();

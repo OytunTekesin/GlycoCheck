@@ -8,6 +8,8 @@ public class Nutrition {
     private String NUTRITION_CAL;
     private String NUTRITION_DURATION;
     private String NUTRITION_DIETICIAN;
+    private String NUTRITION_CONTENT;
+    private String USER_ID;
 
     public String getNUTRITION_ID() {
         return NUTRITION_ID;
@@ -47,5 +49,21 @@ public class Nutrition {
 
     public void setNUTRITION_DIETICIAN(String NUTRITION_DIETICIAN) {
         this.NUTRITION_DIETICIAN = NUTRITION_DIETICIAN;
+    }
+
+    public String getNUTRITION_CONTENT() {
+        return NUTRITION_CONTENT;
+    }
+
+    public void setNUTRITION_CONTENT(String NUTRITION_CONTENT) {
+        this.NUTRITION_CONTENT = NUTRITION_CONTENT;
+    }
+
+    public String getUSER_ID() {
+        return USER_ID;
+    }
+
+    public void setUSER_ID(String USER_ID) {
+        this.USER_ID = USER_ID;
     }
 }

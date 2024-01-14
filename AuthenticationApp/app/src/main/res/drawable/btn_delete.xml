@@ -1,0 +1,17 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Durum: Buton normal durumda -->
+    <item android:state_pressed="false">
+        <shape android:shape="rectangle">
+            <corners android:radius="360dp"/> <!-- Köşe yuvarlatma -->
+            <solid android:color="#FF0000"/> <!-- Normal durumda arka plan rengi (kırmızı) -->
+        </shape>
+    </item>
+
+    <!-- Durum: Buton basıldığında -->
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="360dp"/>
+            <solid android:color="#FF8888"/> <!-- Buton basıldığında arka plan rengi (opsiyonel olarak daha açık bir kırmızı) -->
+        </shape>
+    </item>
+</selector>

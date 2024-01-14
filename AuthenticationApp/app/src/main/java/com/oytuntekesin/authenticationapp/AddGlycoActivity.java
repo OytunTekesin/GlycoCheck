@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -13,11 +14,21 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.oytuntekesin.authenticationapp.dto.Glyco;
+import com.oytuntekesin.authenticationapp.dto.User;
+import com.oytuntekesin.authenticationapp.helpers.NotificationHelper;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 public class AddGlycoActivity extends BaseActivity {
@@ -37,6 +48,9 @@ public class AddGlycoActivity extends BaseActivity {
         EditText editTextAdditionalNote = findViewById(R.id.editTextAdditionalNote);
         EditText editTextDateTime = findViewById(R.id.editTextDateTime);
         Button buttonSave = findViewById(R.id.buttonSave);
+        Button buttonDeleteGlyco = findViewById(R.id.buttonDeleteGlyco);
+
+        buttonDeleteGlyco.setVisibility(View.GONE);
 
         GLYCO_ID = "";
         String ACIKLAMA= "";
@@ -54,6 +68,7 @@ public class AddGlycoActivity extends BaseActivity {
             TARIH = intent.getStringExtra("TARIH");
             if (GLYCO_ID != null && !GLYCO_ID.isEmpty()){
                 buttonSave.setText("Düzenle");
+                buttonDeleteGlyco.setVisibility(View.VISIBLE);
                 if (ACLIK_TOKLUK.equals(radioButtonFeeding.getText().toString())) {
                     radioButtonFeeding.setChecked(true);
                     txtMealDuration.setVisibility(View.GONE);
@@ -159,6 +174,26 @@ public class AddGlycoActivity extends BaseActivity {
                 glyco.setACIKLAMA(additionalNote);
                 glyco.setTARIH(datetime);
                 boolean isSuccess = _glycoBusiness.setGlycoData(_context, glyco);
+                if (isSuccess) {
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            NotificationHelper.showNotification(_context, "Hatırlatıcı", "Şekerinizi ölçmenin zamanı geldi!");
+                        }
+                    }, 1 * 60 * 1000); // Yarım saat (30 dakika) sonra bildirim gönder
+
+
+                    Intent gecisYap = new Intent(getApplicationContext(), MainActivity.class);
+                    gecisYap.putExtra("TAB", "0");
+                    startActivity(gecisYap);
+                }
+            }
+        });
+        buttonDeleteGlyco.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean isSuccess = _glycoBusiness.delGlycoData(_context, GLYCO_ID);
                 if (isSuccess) {
                     Intent gecisYap = new Intent(getApplicationContext(), MainActivity.class);
                     gecisYap.putExtra("TAB", "0");

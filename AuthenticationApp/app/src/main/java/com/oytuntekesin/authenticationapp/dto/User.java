@@ -1,5 +1,7 @@
 package com.oytuntekesin.authenticationapp.dto;
 
+import androidx.annotation.NonNull;
+
 public class User {
     String USER_ID;
     String USER_ADI;
@@ -63,5 +65,11 @@ public class User {
 
     public void setKILO(String KILO) {
         this.KILO = KILO;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return USER_ADI;
     }
 }
