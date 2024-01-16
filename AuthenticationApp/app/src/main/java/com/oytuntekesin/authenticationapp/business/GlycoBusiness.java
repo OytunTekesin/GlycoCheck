@@ -14,13 +14,17 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.oytuntekesin.authenticationapp.R;
 import com.oytuntekesin.authenticationapp.adapters.GlycoAdapter;
 import com.oytuntekesin.authenticationapp.dto.Glyco;
 import com.oytuntekesin.authenticationapp.dto.User;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class GlycoBusiness extends BaseBusiness{
@@ -80,6 +84,24 @@ public class GlycoBusiness extends BaseBusiness{
                                 Glyco c = d.toObject(Glyco.class);
                                 c.setID(d.getId());
                                 glycoList.add(c);
+                            }
+                            for (int i = 0; i < glycoList.size()-1;i++){
+                                for (int j = i+1; j < glycoList.size();j++){
+                                    String tarih1 = glycoList.get(i).getTARIH();
+                                    String tarih2 = glycoList.get(j).getTARIH();
+                                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+                                    try {
+                                        Date date1 = dateFormat.parse(tarih1);
+                                        Date date2 = dateFormat.parse(tarih2);
+                                        if (date1.before(date2)){
+                                            Glyco temp = glycoList.get(i);
+                                            glycoList.set(i, glycoList.get(j));
+                                            glycoList.set(j, temp);
+                                        }
+                                    } catch (ParseException e) {
+                                        System.out.println("Parse hatası: " + e.getMessage());
+                                    }
+                                }
                             }
                             GlycoAdapter adapter_items = new GlycoAdapter(glycoList);
 

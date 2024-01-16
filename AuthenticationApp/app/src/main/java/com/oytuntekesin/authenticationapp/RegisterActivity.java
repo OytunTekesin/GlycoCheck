@@ -32,14 +32,13 @@ public class RegisterActivity extends BaseActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                UserBusiness userBusiness = new UserBusiness();
-                String message =  userBusiness.CheckUserRegister(_context, txtUsername.getText().toString(), txtEmail.getText().toString(), txtPassword.getText().toString(), txtPasswordCheck.getText().toString());
+                String message =  _userBusiness.CheckUserRegister(_context, txtUsername.getText().toString(), txtEmail.getText().toString(), txtPassword.getText().toString(), txtPasswordCheck.getText().toString());
                 if (message == null){
                     User user = new User();
                     user.setUSER_ADI(txtUsername.getText().toString());
                     user.setEMAIL(txtEmail.getText().toString());
                     user.setPASSWORD(txtPassword.getText().toString());
-                    userBusiness.Register(_context, user);
+                    _userBusiness.Register(_context, user);
                 }else {
                     Toast.makeText(view.getContext().getApplicationContext(), message, Toast.LENGTH_SHORT).show();
                 }

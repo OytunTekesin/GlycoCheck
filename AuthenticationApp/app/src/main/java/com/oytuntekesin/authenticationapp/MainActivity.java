@@ -11,6 +11,7 @@ import com.oytuntekesin.authenticationapp.databinding.ActivityMainBinding;
 import com.oytuntekesin.authenticationapp.fragments.ExerciseFragment;
 import com.oytuntekesin.authenticationapp.fragments.GlycoFragment;
 import com.oytuntekesin.authenticationapp.fragments.NutritionFragment;
+import com.oytuntekesin.authenticationapp.fragments.SettingsFragment;
 
 public class MainActivity extends BaseActivity {
     ActivityMainBinding binding;

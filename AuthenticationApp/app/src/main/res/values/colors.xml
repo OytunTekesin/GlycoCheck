@@ -22,4 +22,9 @@
     <color name="login_details">#CCFFFFFF</color>
     <color name="login_details_light">#1AFFFFFF</color>
     <color name="login_details_medium">#66FFFFFF</color>
+
+
+
+    <color name="cikis_yap_clicked">#DDE8001C</color>
+    <color name="cikis_yap_unclicked">#DDE82038</color>
 </resources>

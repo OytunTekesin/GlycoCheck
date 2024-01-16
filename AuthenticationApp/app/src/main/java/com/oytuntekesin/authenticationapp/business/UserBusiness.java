@@ -109,7 +109,7 @@ public class UserBusiness extends BaseBusiness {
 
                 user.setUSER_ID(authResult.getUser().getUid());
                 user.setUSER_ROLE("USER");
-                _db.collection("USER_TABLE").document().set(user);
+                _db.collection("USER_TABLE").document(user.getUSER_ID()).set(user);
 
                 progressDialog.dismiss();
                 //Email doğrulama
