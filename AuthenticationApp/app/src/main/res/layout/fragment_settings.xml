@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:layout_marginTop="50dp"
     android:padding="16dp">
 
     <androidx.cardview.widget.CardView
@@ -21,8 +22,8 @@
             android:textSize="30dp"
             android:gravity="center"
             android:padding="5dp"
-            android:background="@color/cardview_shadow_start_color"
-
+            android:background="@color/colorPrimary"
+            android:textColor="#fff"
             />
     </androidx.cardview.widget.CardView>
     <androidx.cardview.widget.CardView
@@ -40,8 +41,8 @@
             android:textSize="30dp"
             android:gravity="center"
             android:padding="5dp"
-            android:background="@color/cardview_shadow_start_color"
-            />
+            android:background="@color/colorPrimary"
+            android:textColor="#fff"            />
     </androidx.cardview.widget.CardView>
     <androidx.cardview.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -58,8 +59,8 @@
             android:textSize="30dp"
             android:gravity="center"
             android:padding="5dp"
-            android:background="@color/cardview_shadow_start_color"
-            />
+            android:background="@color/colorPrimary"
+            android:textColor="#fff"            />
     </androidx.cardview.widget.CardView>
     <androidx.cardview.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"

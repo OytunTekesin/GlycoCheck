@@ -77,7 +77,7 @@
         android:layout_height="wrap_content"
         android:text="Kaydet"
         android:textSize="20sp"
-        android:layout_marginBottom="450dp"
+        android:layout_marginBottom="250dp"
         android:background="@drawable/button_background"
         app:backgroundTint="@color/colorPrimary"
         android:layout_gravity="center"

@@ -103,9 +103,9 @@ public class GlycoAdapter extends RecyclerView.Adapter<GlycoAdapter.ViewHolder> 
         }
         holder.circle.setText(gylcoList.get(position).getKAN_SEKERI());
         Drawable drawable = ContextCompat.getDrawable(holder.circle.getContext(), R.drawable.circle_green_background);
-        if (80 < Integer.parseInt(gylcoList.get(position).getKAN_SEKERI()) && Integer.parseInt(gylcoList.get(position).getKAN_SEKERI()) < 120){
+        if (80 <= Integer.parseInt(gylcoList.get(position).getKAN_SEKERI()) && Integer.parseInt(gylcoList.get(position).getKAN_SEKERI()) <= 120){
             drawable = ContextCompat.getDrawable(holder.circle.getContext(), R.drawable.circle_green_background);
-        }else if ((70 < Integer.parseInt(gylcoList.get(position).getKAN_SEKERI()) && Integer.parseInt(gylcoList.get(position).getKAN_SEKERI()) < 80)|| (120 < Integer.parseInt(gylcoList.get(position).getKAN_SEKERI()) && Integer.parseInt(gylcoList.get(position).getKAN_SEKERI()) < 140)){
+        }else if ((70 <= Integer.parseInt(gylcoList.get(position).getKAN_SEKERI()) && Integer.parseInt(gylcoList.get(position).getKAN_SEKERI()) <= 80)|| (120 < Integer.parseInt(gylcoList.get(position).getKAN_SEKERI()) && Integer.parseInt(gylcoList.get(position).getKAN_SEKERI()) < 140)){
             drawable = ContextCompat.getDrawable(holder.circle.getContext(), R.drawable.circle_orange_background);
         }else {
             drawable = ContextCompat.getDrawable(holder.circle.getContext(), R.drawable.circle_red_background);
