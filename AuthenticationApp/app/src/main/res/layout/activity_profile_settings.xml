@@ -10,7 +10,7 @@
         android:id="@+id/textViewUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Kullanıcı Adı:"
+        android:text="Adı Soyadı :"
         android:textSize="18sp"/>
 
     <EditText
@@ -25,12 +25,42 @@
         android:id="@+id/textViewEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="E-posta Adresi:"
+        android:text="E-posta Adresi :"
         android:textSize="18sp"
         android:layout_marginTop="16dp"/>
 
     <EditText
         android:id="@+id/editTextEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:textSize="30sp"
+        android:background="@drawable/edit_text_background"/>
+    <TextView
+        android:id="@+id/textViewBoy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Boy :"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextBoy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:textSize="30sp"
+        android:background="@drawable/edit_text_background"/>
+    <TextView
+        android:id="@+id/textViewKilo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kilo :"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextKilo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
